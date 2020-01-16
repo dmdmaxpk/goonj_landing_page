@@ -7,6 +7,10 @@
   pointer-events: none;
 }
 
+body, html {
+  height: 100%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -35,4 +39,90 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.main_landing_page {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+.landing_page_background {
+  background-image: url("./assets/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full_page_height {
+  height: 100%;
+}
+
+.popup {
+  z-index: 100;
+  background-color: white;
+  height: 50%;
+  width: 40%;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+
+}
+
+.button{
+  border: none;
+  background: url("./assets/button.png") no-repeat top left;
+  background-size: cover;
+  width: 223px;
+  min-height: 45px;
+  max-width: 100%;
+  display: block;
+  border-radius: 10px;
+  height: auto;
+}
+
+.popup_content {
+  padding: 10px;
+  justify-self: center;
+  align-self: center;
+  display: grid;
+  grid-template-rows: auto auto 30%;
+  grid-template-columns: auto;
+  width: 80%;
+  grid-row-gap: 0%;
+}
+
+.popup_row_1 {
+  align-self: center;
+  justify-self: center;
+}
+
+.popup_row_2 {
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+}
+
+.popup_row_3 {
+  align-self: center;
+  justify-self: center;
+}
+
+.popup_text_1 {
+  font-size: 3em;
+}
+
+.popup_text_2 {
+  font-size: 2em;
+  color: blue;
+}
+
+.popup_text_3 {
+  font-size: 1em;
+  color: green;
 }
