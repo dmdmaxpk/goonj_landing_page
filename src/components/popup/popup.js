@@ -48,7 +48,7 @@ export default class  Popup extends React.Component {
     Axios.post(`${config.base_url}/payment/subscribe`, userData)
     .then(res =>{
       console.log(res);
-      window.location.href = "http://web.st.goonj.pk/live-tv"
+      window.location.href = `http://web.st.goonj.pk/live-tv?msisdn=${this.props.msisdn}`
     })
     .catch(err =>{
       alert("Something went wrong! :(");
@@ -58,14 +58,13 @@ export default class  Popup extends React.Component {
     this.setState({doubleConsent: false});
   }
   handleSubmit(){
-    window.location.href = "http://web.st.goonj.pk/live-tv?msisdn=03468567087&enabled=true";
       if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced"){
         console.log("Old User");
         this.setState({doubleConsent: true});
       }
-      if(this.state.data.subscription_status === "billed"){
+      if(this.state.data.subscription_status === "billed" || this.state.data.subscription_status === "trial"){
         console.log("Subscriber");
-        window.location.href = "http://web.st.goonj.pk/live-tv"
+        window.location.href = `http://web.st.goonj.pk/live-tv?msisdn=${this.props.msisdn}`;
       }
       else if(this.state.data.code === 6){
         console.log("New Arrival");
