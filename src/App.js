@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <div id="app-div" className="full_page_height">
-        <Route path="/:msisdn" component={Landing} ></Route>
+        <Route path="/" component={Landing} ></Route>
       </div>
     </BrowserRouter>
   );

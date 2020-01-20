@@ -17,11 +17,11 @@ export default class  Popup extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
   componentDidMount(){
-    console.log(this.props.msisdn);
+    // console.log(this.props.msisdn);
     Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}`)
     .then(res => {
       let data = res.data; 
-      console.log(data);
+      // console.log(data);
       if(data){
         this.setState({data});
       }
@@ -31,7 +31,7 @@ export default class  Popup extends React.Component {
     })
     Axios.get(`${config.base_url}/package`)
     .then(res =>{
-      console.log(res.data[0])
+      // console.log(res.data[0])
       let packageData = res.data[0];
       this.setState({
         packageId: packageData._id
@@ -42,12 +42,13 @@ export default class  Popup extends React.Component {
     const userData = {
       msisdn: this.props.msisdn,
       package_id: this.state.packageId,
-      source: "web"
+      source: "HE",
+      marketing_source: this.props.src
     }
-    console.log('user', userData);
+    // console.log('user', userData);
     Axios.post(`${config.base_url}/payment/subscribe`, userData)
     .then(res =>{
-      console.log(res);
+      // console.log(res);
       window.location.href = `http://web.st.goonj.pk/live-tv?msisdn=${this.props.msisdn}`
     })
     .catch(err =>{
