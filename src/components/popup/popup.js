@@ -59,15 +59,12 @@ export default class  Popup extends React.Component {
   }
   handleSubmit(){
       if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced"){
-        console.log("Old User");
         this.setState({doubleConsent: true});
       }
       if(this.state.data.subscription_status === "billed" || this.state.data.subscription_status === "trial"){
-        console.log("Subscriber");
         window.location.href = `http://web.st.goonj.pk/live-tv?msisdn=${this.props.msisdn}`;
       }
       else if(this.state.data.code === 6){
-        console.log("New Arrival");
         this.subscribe();
       }
   }
