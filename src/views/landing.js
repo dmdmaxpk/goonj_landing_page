@@ -20,7 +20,7 @@ export default class  Landing extends React.Component {
         <div className="full_page_height">
             <div className="landing_page_background">
             {
-                this.state.showPopup? <Popup></Popup>: null
+                this.state.showPopup? <Popup msisdn={this.props.match.params.msisdn} />: null
             }
             </div>
         </div>
