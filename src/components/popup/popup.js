@@ -24,6 +24,9 @@ export default class  Popup extends React.Component {
       // console.log(data);
       if(data){
         this.setState({data});
+        if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
+          window.location.href = `http://web.st.goonj.pk/live-tv?msisdn=${this.props.msisdn}`;
+        }
       }
     })
     .catch(err => {
