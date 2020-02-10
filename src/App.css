@@ -9,6 +9,7 @@
 
 body, html {
   height: 100%;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -42,9 +43,9 @@ body, html {
 }
 
 .main_landing_page {
-    display: grid;
+    /* display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto;
+    grid-template-rows: auto; */
 }
 
 .landing_page_background {
@@ -63,15 +64,28 @@ body, html {
 }
 
 .popup {
-  z-index: 100;
+  z-index: 1000;
   background-color: white;
-  height: 50%;
-  width: 40%;
+  width: 25%;
   border-radius: 15px;
-  display: grid;
+  text-align: center;
+  /* height: 50%; */
+  /* display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto;
+  grid-template-rows: auto; */
+  /* overflow: hidden; */
+}
 
+
+.popup_content {
+  padding: 10px;
+  grid-row-gap: 0%;
+  /* justify-self: center;
+  align-self: center;
+  display: grid;
+  grid-template-rows: auto auto 30%;
+  grid-template-columns: auto; */
+  /* width: 80%; */
 }
 
 .button{
@@ -81,25 +95,40 @@ body, html {
   width: 223px;
   min-height: 45px;
   max-width: 100%;
-  display: block;
   border-radius: 10px;
   height: auto;
-}
+  color: white;
+  font-weight: bolder;
+  font-family: 'Montserrat', sans-serif;
+  margin: 5%;
+  text-transform: capitalize;
+  outline: none;
+  cursor: pointer;
+  /* padding: 5% !important; */
+  /* display: block; */
+  }
+  .btnDoubleConsent{
+    margin-top: 30px;
+    padding: 4%;
+    color: white;
+    border: none;
+    background-size: cover;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    font-weight: bolder;
+    font-family: 'Montserrat', sans-serif;
+    /* width: 50px; */
+  }
+  .btnYes{
+    background-color: #8ec318;
+    margin-right: 5px;
+  }
+  .btnNo{
+    background-color: rgb(186, 46, 46);
+  }
 
-.popup_content {
-  padding: 10px;
-  justify-self: center;
-  align-self: center;
-  display: grid;
-  grid-template-rows: auto auto 30%;
-  grid-template-columns: auto;
-  width: 80%;
-  grid-row-gap: 0%;
-}
-
-.popup_row_1 {
-  align-self: center;
-  justify-self: center;
+/* .popup_row_1 {
 }
 
 .popup_row_2 {
@@ -111,18 +140,103 @@ body, html {
 .popup_row_3 {
   align-self: center;
   justify-self: center;
-}
+} */
 
 .popup_text_1 {
-  font-size: 3em;
+  font-weight: bolder;
+  font-size: xx-large;
+  color: #363636;
+  text-shadow: 0px 1px;
+  letter-spacing: 1px;
 }
 
 .popup_text_2 {
-  font-size: 2em;
-  color: blue;
+  font-weight: bolder;
+  font-size: large;
+  color: #3497eb;
+  text-shadow: 0px 1px;
 }
 
 .popup_text_3 {
+  font-weight: bolder;
   font-size: 1em;
-  color: green;
+  color: #8ec318;
+  text-shadow: 0px 1px;
+}
+.goonj_logo{
+  width: 150px;
+  margin: 5%;
+}
+@media only screen and (max-width: 1600px) {
+  .popup{
+    width: 30%;
+    /* padding: 2%; */
+  }
+  .popup_text_1{
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: xx-large;
+  }
+}
+@media only screen and (max-width: 1350px) {
+  .popup{
+    width: 35%;
+    /* padding: 2%; */
+  }
+  .popup_text_1{
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: xx-large;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .popup{
+    width: 50%;
+    /* padding: 2%; */
+  }
+  .popup_text_1{
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: xx-large;
+  }
+}
+@media only screen and (max-width: 768px) {
+.popup{
+  width: 60%;
+}
+.popup_text_1{
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: x-large;
+}
+@media only screen and (max-width: 550px) {
+  .popup{
+    width: 90%;
+  }
+  .popup_text_1{
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: x-large;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .popup{
+    width: 90%;
+  }
+  .popup_text_1{
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: larger;
+  }
+  .popup_text_2{
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: small;
+  }
+  .popup_text_3{
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: x-small;
+  }
+}
 }

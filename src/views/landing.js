@@ -16,11 +16,15 @@ export default class  Landing extends React.Component {
   }
 
   render() {
+    var queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var msisdn = urlParams.get('msisdn');
+    var src = urlParams.get('src');
     return (
         <div className="full_page_height">
             <div className="landing_page_background">
             {
-                this.state.showPopup? <Popup></Popup>: null
+                this.state.showPopup? <Popup msisdn={msisdn} src={src} />: null
             }
             </div>
         </div>
