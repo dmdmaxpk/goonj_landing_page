@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import { config } from '../../config/config';
+import  config  from '../../config/config';
 // import { Logo } from '../../assets/logo.png'
 
 export default class  Popup extends React.Component {
@@ -17,7 +17,6 @@ export default class  Popup extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
   componentDidMount(){
-    // console.log(this.props.msisdn);
     Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}`)
     .then(res => {
       let data = res.data; 
@@ -25,7 +24,7 @@ export default class  Popup extends React.Component {
       if(data){
         this.setState({data});
         if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
-          window.location.href = `http://web.st.goonj.pk/live-tv?msisdn=${this.props.msisdn}`;
+          window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`;
         }
       }
     })
@@ -46,13 +45,16 @@ export default class  Popup extends React.Component {
       msisdn: this.props.msisdn,
       package_id: this.state.packageId,
       source: "HE",
-      marketing_source: this.props.src
+      marketing_source: this.props.src,
+      affiliate_unique_transaction_id: this.props.tid,
+      affiliate_mid: this.props.mid
+
     }
     // console.log('user', userData);
     Axios.post(`${config.base_url}/payment/subscribe`, userData)
     .then(res =>{
       // console.log(res);
-      window.location.href = `http://web.st.goonj.pk/live-tv?msisdn=${this.props.msisdn}`
+      window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`
     })
     .catch(err =>{
       alert("Something went wrong! :(");
@@ -66,7 +68,7 @@ export default class  Popup extends React.Component {
         this.setState({doubleConsent: true});
       }
       if(this.state.data.subscription_status === "billed" || this.state.data.subscription_status === "trial"){
-        window.location.href = `http://web.st.goonj.pk/live-tv?msisdn=${this.props.msisdn}`;
+        window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`;
       }
       else if(this.state.data.code === 6){
         this.subscribe();
