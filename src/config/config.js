@@ -1,7 +1,7 @@
 export const config = {
     development: {
         base_url: 'https://api.goonj.pk/v2',
-        mainWebsiteUrl: "http://web.st.goonj.pk" 
+        mainWebsiteUrl: "http://staging.goonj.pk" 
     },
     production: {
         base_url: 'https://api.goonj.pk/v2',

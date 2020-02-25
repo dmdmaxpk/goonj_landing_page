@@ -1,0 +1,46 @@
+.pslSubPage{
+    background-image: url("../../assets/pslDesktop.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: hidden;
+}
+.btnSubmitPsl{
+    opacity: 0%;
+    position: relative;
+    top: 51%;
+    left: 38%;
+    width: 25%;
+    height: 10%;
+    cursor: pointer;
+}
+@media (max-width: 480px) {
+    .pslSubPage{
+        background-image: url("../../assets/pslMobile.png");
+        background-position: unset;
+    }
+    .btnSubmitPsl{
+        position: relative;
+        top: 59%;
+        left: 10%;
+        width: 80%;
+        height: 20%;
+        cursor: pointer;
+    }
+}
+@media (max-width: 380px) {
+    .pslSubPage{
+        background-image: url("../../assets/pslMobile.png");
+        background-position: unset;
+    }
+    .btnSubmitPsl{
+        position: relative;
+        top: 65%;
+        left: 10%;
+        width: 80%;
+        height: 20%;
+        cursor: pointer;
+    }
+}
