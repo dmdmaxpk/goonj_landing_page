@@ -19,7 +19,7 @@ export default class  PslSubmit extends React.Component {
     Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}`)
     .then(res => {
       let data = res.data; 
-      // console.log(data);
+      console.log("greylist", data);
       if(data){
         this.setState({data});
         if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
@@ -62,7 +62,7 @@ export default class  PslSubmit extends React.Component {
     this.setState({doubleConsent: false});
   }
   handleSubmit(){
-      if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced"){
+      if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced" || this.state.data.is_gray_listed === true){
         this.setState({doubleConsent: true});
       }
       if(this.state.data.subscription_status === "billed" || this.state.data.subscription_status === "trial"){
@@ -75,7 +75,19 @@ export default class  PslSubmit extends React.Component {
 
   render() {
     return (
-        <button class="btnSubmitPsl" onClick={this.subscribe}>Submit</button>
+      <div>
+        <button class="btnSubmitPsl" onClick={this.handleSubmit} style={{display: this.state.doubleConsent === true ? "none" : ""}}>Submit</button>
+        {this.state.doubleConsent === false ?
+        ""
+          :
+          <div className="consentBox">
+            <div className="popup_text_1">Proceed?</div>
+            <button className="btnDoubleConsent btnYes pslYes" onClick={this.subscribe}>Yes</button>
+            <button className="btnDoubleConsent btnNo pslYes" onClick={this.cancel}>No</button>
+          </div>
+        }
+      </div>
+
     );
   }
 }

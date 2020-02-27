@@ -1,6 +1,4 @@
 import React from 'react';
-// import Popup from "../components/popup/popup";
-import "./psl.css"
 import PslSubmit from '../../components/pslSubmit/pslSubmit';
 export default class  Landing extends React.Component {
 

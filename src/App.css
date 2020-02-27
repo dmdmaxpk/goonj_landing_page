@@ -167,6 +167,38 @@ body, html {
   width: 150px;
   margin: 5%;
 }
+.pslSubPage{
+  background-image: url("./assets/pslDesktop.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+}
+.btnSubmitPsl{
+  opacity: 0%;
+  position: relative;
+  margin-top: 26%;
+  left: 38%;
+  width: 25%;
+  height: 90px;
+  cursor: pointer;
+}
+.consentBox{
+  text-align: center;
+  background-color: white;
+  height: 17vh;
+  width: 18vw;
+  position: relative;
+  left: 41%;
+  margin-top: 23%;
+  border-radius: 8px;
+  padding: 2% 0 0 0;
+}
+.pslYes{
+  width: 4vw;
+}
 @media only screen and (max-width: 1600px) {
   .popup{
     width: 30%;
@@ -176,6 +208,14 @@ body, html {
     white-space: nowrap;
     overflow: hidden;
     font-size: xx-large;
+  }
+  .btnSubmitPsl{
+    position: relative;
+    margin-top: 31%;
+    left: 37%;
+    width: 26%;
+    height: 90px;
+    cursor: pointer;
   }
 }
 @media only screen and (max-width: 1350px) {
@@ -199,6 +239,44 @@ body, html {
     overflow: hidden;
     font-size: xx-large;
   }
+  .consentBox{
+    text-align: center;
+    background-color: white;
+    height: 13vh;
+    width: 40vw;
+    position: relative;
+    left: 30%;
+    margin-top: 62%;
+    border-radius: 8px;
+    padding: 3% 0 0 0;
+  }
+  .pslYes{
+    width: 12vw;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .consentBox{
+    text-align: center;
+    background-color: white;
+    height: 18vh;
+    width: 40vw;
+    position: relative;
+    left: 30%;
+    margin-top: 40%;
+    border-radius: 8px;
+    padding: 3% 0 0 0;
+  }
+  .pslYes{
+    width: 12vw;
+  }
+  .btnSubmitPsl{
+    position: relative;
+    margin-top: 44%;
+    left: 30%;
+    width: 40%;
+    height: 90px;
+    cursor: pointer;
+  }
 }
 @media only screen and (max-width: 768px) {
 .popup{
@@ -209,6 +287,28 @@ body, html {
   overflow: hidden;
   font-size: x-large;
 }
+.btnSubmitPsl{
+  position: relative;
+  margin-top: 59%;
+  left: 26%;
+  width: 50%;
+  height: 90px;
+  cursor: pointer;
+}
+.consentBox{
+  text-align: center;
+  background-color: white;
+  height: 17vh;
+  width: 40vw;
+  position: relative;
+  left: 30%;
+  margin-top: 60%;
+  border-radius: 8px;
+  padding: 2% 0 0 0;
+}
+.pslYes{
+  width: 12vw;
+}
 @media only screen and (max-width: 550px) {
   .popup{
     width: 90%;
@@ -217,6 +317,48 @@ body, html {
     white-space: nowrap;
     overflow: hidden;
     font-size: x-large;
+  }
+  .consentBox{
+    text-align: center;
+    background-color: white;
+    height: 17vh;
+    width: 40vw;
+    position: relative;
+    left: 30%;
+    margin-top: 108%;
+    border-radius: 8px;
+    padding: 2% 0 0 0;
+  }
+  .pslYes{
+    width: 12vw;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .pslSubPage{
+    background-image: url("./assets/pslMobile.png");
+    background-position: unset;
+  }
+  .btnSubmitPsl{
+    position: relative;
+    margin-top: 118%;
+    left: 15%;
+    width: 70%;
+    height: 90px;
+    cursor: pointer;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .pslSubPage{
+    background-image: url("./assets/pslMobile.png");
+    background-position: unset;
+  }
+  .btnSubmitPsl{
+    position: relative;
+    margin-top: 127%;
+    left: 15%;
+    width: 80%;
+    height: 90px;
+    cursor: pointer;
   }
 }
 @media only screen and (max-width: 360px) {
@@ -237,6 +379,14 @@ body, html {
     white-space: nowrap;
     overflow: hidden;
     font-size: x-small;
+  }
+  .btnSubmitPsl{
+    position: relative;
+    margin-top: 115%;
+    left: 15%;
+    width: 75%;
+    height: 90px;
+    cursor: pointer;
   }
 }
 }
