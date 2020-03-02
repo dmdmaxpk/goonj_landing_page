@@ -64,7 +64,7 @@ export default class  Popup extends React.Component {
     this.setState({doubleConsent: false});
   }
   handleSubmit(){
-      if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced"){
+      if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced"  || this.state.data.subscription_status === "not_billed" || this.state.data.is_gray_listed === true){
         this.setState({doubleConsent: true});
       }
       if(this.state.data.subscription_status === "billed" || this.state.data.subscription_status === "trial"){

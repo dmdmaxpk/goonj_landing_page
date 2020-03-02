@@ -10,10 +10,10 @@ export const config = {
 };
 
 
-let environment = 'development';
+let environment = 'production';
 if (process.env.REACT_APP_ENV) {
   environment = process.env.REACT_APP_ENV ;
 } else {
-    environment = 'development';
+    environment = 'production';
 }
 export default config[environment];

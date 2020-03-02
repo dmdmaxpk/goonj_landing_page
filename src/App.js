@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <div id="app-div" className="full_page_height">
         <Route exact path="/" component={Landing} ></Route>
-        <Route exact path="/psl" component={PslLanding} ></Route>
+        {/* <Route exact path="/psl" component={PslLanding} ></Route> */}
       </div>
     </BrowserRouter>
   );
