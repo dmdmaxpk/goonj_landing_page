@@ -20,7 +20,7 @@ export default class  Popup extends React.Component {
     Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}`)
     .then(res => {
       let data = res.data; 
-      // console.log(data);
+      console.log(data);
       if(data){
         this.setState({data});
         if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
@@ -65,6 +65,7 @@ export default class  Popup extends React.Component {
   }
   handleSubmit(){
       if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced"  || this.state.data.subscription_status === "not_billed" || this.state.data.is_gray_listed === true){
+        console.log("in here");
         this.setState({doubleConsent: true});
       }
       if(this.state.data.subscription_status === "billed" || this.state.data.subscription_status === "trial"){

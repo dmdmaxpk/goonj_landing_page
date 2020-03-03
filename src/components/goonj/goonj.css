@@ -1,0 +1,193 @@
+.liveComponent{
+    text-align: center;
+}
+.box{
+    text-align: center;
+}
+.goonjLogo{
+    margin-top: 2%;
+}
+.liveText1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 60px;
+}
+.boxBgDiv{
+    position: relative;
+}
+.boxBgImg{
+    background-image: url("../../assets/boxbg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 30%;
+}
+.bbTextDiv{
+    position: absolute;
+    top: 10%;
+    color: white;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.text1{
+    font-size: x-large;
+}
+.text2{
+    font-size: x-large;
+    color: #bbf525;
+}
+.text3{
+    font-size: large;
+}
+.btnSub{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.btnSubImg{
+    width: 80%;
+}
+.text4{
+    text-transform: none;
+    font-size: small;
+    margin-top: 1%;
+}
+.btnSubConfirm{
+    margin-top: 3%;
+    background-color: transparent;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+}
+.btnConfirmText{
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 100%;
+    font-size: large;
+}
+@media screen and (max-width: 1690px) {
+    .liveText1{
+        margin: 2% 0 2% 0;
+    }
+    .bbTextDiv{
+        top: 0;
+    }
+    .btnSubImg{
+        width: 70%;
+    }
+    .teamsImg{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 1475px) {
+    .boxBgImg{
+        width: 30%;
+    }
+    .teamsImg{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 1450px) {
+    .goonjLogo{
+        width: 15%;
+    }
+    .liveText1{
+        font-size: 40px;
+    }
+    .boxBgImg{
+        width: 35%;
+    }
+    .teamsImg{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 1230px) {
+    .boxBgImg{
+        width: 40%;
+    }
+    .teamsImg{
+        width: 45%;
+    }
+}
+@media screen and (max-width: 1080px) {
+    .boxBgImg{
+        width: 45%;
+    }
+    .teamsImg{
+        width: 55%;
+    }
+}
+@media screen and (max-width: 960px) {
+    .boxBgImg{
+        width: 50%;
+    }
+    .teamsImg{
+        width: 60%;
+    }
+}
+@media screen and (max-width: 852px) {
+    .boxBgImg{
+        width: 60%;
+    }
+    .teamsImg{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 705px) {
+    .boxBgImg{
+        width: 70%;
+    }
+    .teamsImg{
+        display: none;
+    }
+}
+@media screen and (max-width: 600px) {
+    .boxBgImg{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 525px) {
+    .boxBgImg{
+        width: 85%;
+    }
+}
+@media screen and (max-width: 490px) {
+    .goonjLogo{
+        width: 50%;
+        margin-top: 15%;
+    }
+    .liveText1{
+        font-size: 30px;
+        margin: 3rem 0 3rem 0;
+    }
+    .boxBgImg{
+        width: 85%;
+    }
+    .text1, .text2{
+        font-size: large;
+    }
+    .text3{
+        font-size: small;
+    }
+    .btnSubImg{
+        width: 50%;
+    }
+    .text4{
+        font-size: x-small;
+    }
+    .teamsImg{
+        display: none;
+    }
+}
+@media screen and (max-width: 420px) {
+    .boxBgImg{
+        width: 100%;
+    }
+}
