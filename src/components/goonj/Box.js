@@ -18,22 +18,30 @@ class Box extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
   componentDidMount(){
+    Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}`)
+    .then(res => {
+      let data = res.data; 
+      console.log(data);
+      if(data){
+        this.setState({data});
+        if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
+          window.location.href = `${config.mainWebsiteUrl}/channel/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true`;
+        }
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
   subscribe(){
     const userData = {
       msisdn: this.props.msisdn,
-      package_id: this.state.packageId,
-      source: "HE",
-      marketing_source: this.props.src,
-      affiliate_unique_transaction_id: this.props.tid,
-      affiliate_mid: this.props.mid
-
+      package_id: this.props.packageID,
+      source: "web",
     }
-    // console.log('user', userData);
     Axios.post(`${config.base_url}/payment/subscribe`, userData)
     .then(res =>{
-      // console.log(res);
-      window.location.href = `${config.mainWebsiteUrl}/channel/${this.props.slug}?msisdn=${this.props.msisdn}`
+      window.location.href = `${config.mainWebsiteUrl}/channel/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true`
     })
     .catch(err =>{
       alert("Something went wrong! :(");
@@ -43,15 +51,12 @@ class Box extends React.Component {
     this.setState({doubleConsent: false});
   }
   handleSubmit(){
-      if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced"  || this.state.data.subscription_status === "not_billed" || this.state.data.is_gray_listed === true){
-        console.log("in here");
-        this.setState({doubleConsent: true});
-      }
-      if(this.state.data.subscription_status === "billed" || this.state.data.subscription_status === "trial"){
-        window.location.href = `${config.mainWebsiteUrl}/channel/${this.props.slug}?msisdn=${this.props.msisdn}`;
-      }
-      else if(this.state.data.code === 6){
-        this.subscribe();
+      if (this.state.data.subscription_status === "expired" ||
+          this.state.data.subscription_status === "graced"  ||
+          this.state.data.subscription_status === "not_billed" ||
+          this.state.data.is_gray_listed === true ||
+          this.state.data.code === 6){
+            this.setState({doubleConsent: true});
       }
   }
 

@@ -6,7 +6,15 @@ import PslLanding from "./views/psl/pslLanding";
 import GoonjPsl from "./views/goonj/psl";
 import GoonjLive from "./views/goonj/live";
 
-function App() {
+import {PageView, initGA} from './components/Tracking';
+
+class App extends React.Component{
+
+componentDidMount(){
+  initGA('UA-69091505-12');
+  PageView();
+}
+render(){
   return (
     <BrowserRouter>
       <div id="app-div" className="full_page_height">
@@ -17,6 +25,7 @@ function App() {
       </div>
     </BrowserRouter>
   );
+}  
 }
 
 export default App;

@@ -1,7 +1,8 @@
 import React from 'react';
+import ReactGA from "react-ga";
 import Axios from 'axios';
 import  config  from '../../config/config';
-// import { Logo } from '../../assets/logo.png'
+import {Event} from '../Tracking';
 
 export default class  Popup extends React.Component {
 
@@ -20,10 +21,13 @@ export default class  Popup extends React.Component {
     Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}`)
     .then(res => {
       let data = res.data; 
-      console.log(data);
+      // console.log(data);
+
+      Event("Count", "Load", "Landing");
       if(data){
         this.setState({data});
         if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
+          Event("Count", "Load", "Already Subscribed");
           window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`;
         }
       }
@@ -45,7 +49,7 @@ export default class  Popup extends React.Component {
       msisdn: this.props.msisdn,
       package_id: this.state.packageId,
       source: "HE",
-      marketing_source: this.props.src,
+      marketing_source: this.props.mid,
       affiliate_unique_transaction_id: this.props.tid,
       affiliate_mid: this.props.mid
 
@@ -53,7 +57,13 @@ export default class  Popup extends React.Component {
     // console.log('user', userData);
     Axios.post(`${config.base_url}/payment/subscribe`, userData)
     .then(res =>{
-      // console.log(res);
+      if(res.data.code === 11 && res.data.message === "Trial period activated!"){
+        console.log("Trial Event");
+        Event("Click", "Trial Activated With Msisdn", this.props.msisdn);
+      }
+      else if(res.data.code === 10 && res.data.message === "In queue for billing!"){
+        Event("Count", "Click", "Queued for billing");
+      }
       window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`
     })
     .catch(err =>{
@@ -64,12 +74,9 @@ export default class  Popup extends React.Component {
     this.setState({doubleConsent: false});
   }
   handleSubmit(){
+      Event("Count", "Click", "Subscribe Button Click");
       if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced"  || this.state.data.subscription_status === "not_billed" || this.state.data.is_gray_listed === true){
-        console.log("in here");
         this.setState({doubleConsent: true});
-      }
-      if(this.state.data.subscription_status === "billed" || this.state.data.subscription_status === "trial"){
-        window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`;
       }
       else if(this.state.data.code === 6){
         this.subscribe();
