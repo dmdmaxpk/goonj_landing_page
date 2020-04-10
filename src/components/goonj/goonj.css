@@ -2,7 +2,9 @@
     text-align: center;
 }
 .box{
-    text-align: center;
+    text-align: left;
+    margin-top: 10%;
+    margin-left: 6%;
 }
 .goonjLogo{
     margin-top: 2%;
@@ -15,6 +17,7 @@
 }
 .boxBgDiv{
     position: relative;
+    /* background-image: url("../../assets/boxbg.png"); */
 }
 .boxBgImg{
     background-image: url("../../assets/boxbg.png");
@@ -31,15 +34,21 @@
     text-transform: uppercase;
     font-weight: bolder;
 }
+.text0{
+    font-size: 30px;
+}
 .text1{
     font-size: x-large;
+    text-transform: none;
+    margin-bottom: 2% !important;
 }
 .text2{
-    font-size: x-large;
+    font-size: small;
+    margin-top: 0 !important;
     color: #bbf525;
 }
 .text3{
-    font-size: large;
+    font-size: small;
 }
 .btnSub{
     border: none;
@@ -47,12 +56,12 @@
     cursor: pointer;
 }
 .btnSubImg{
-    width: 80%;
+    width: 50%;
 }
 .text4{
     text-transform: none;
-    font-size: small;
-    margin-top: 1%;
+    font-size: xx-small;
+    margin-top: 2%;
 }
 .btnSubConfirm{
     margin-top: 3%;
@@ -80,7 +89,8 @@
         top: 0;
     }
     .btnSubImg{
-        width: 70%;
+        width: 50%;
+        float: left;
     }
     .teamsImg{
         width: 50%;
@@ -159,6 +169,19 @@
     }
 }
 @media screen and (max-width: 490px) {
+    .bbTextDiv{
+        background-size: cover;
+        background-image: url("../../assets/m-bg.png");
+        margin-top: 60%;
+        width: 90%;
+        background-repeat: no-repeat;
+        position: relative;
+        top: 0;
+        left: 0;
+        text-align: center;
+        padding: 8% 2% 8% 2%;
+        text-transform: capitalize;
+    }
     .goonjLogo{
         width: 50%;
         margin-top: 15%;
@@ -170,17 +193,28 @@
     .boxBgImg{
         width: 85%;
     }
-    .text1, .text2{
+    .text0{
         font-size: large;
     }
-    .text3{
+    .text1{
         font-size: small;
+        margin-bottom: 5% !important;
+    }
+    .text2{
+        font-size: x-small;
+        margin-bottom: 0 !important;
+    }
+    .text3{
+        margin-top: 0 !important;
+        font-size: x-small;
+
     }
     .btnSubImg{
-        width: 50%;
+        width: 60%;
+        float: none;
     }
     .text4{
-        font-size: x-small;
+        font-size: 8px;
     }
     .teamsImg{
         display: none;

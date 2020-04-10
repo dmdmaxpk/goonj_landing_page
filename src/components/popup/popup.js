@@ -11,31 +11,42 @@ export default class  Popup extends React.Component {
     this.state = {
       data: [],
       packageId: '',
-      doubleConsent: false
+      doubleConsent: false,
+      btnDisable: true
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.subscribe = this.subscribe.bind(this);
     this.cancel = this.cancel.bind(this);
+    // this.testSubscribe = this.testSubscribe.bind(this);
   }
   componentDidMount(){
-    Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}`)
-    .then(res => {
-      let data = res.data; 
-      // console.log(data);
+  Axios.get(`${config.base_url}/pageview?source=HE&msisdn=${this.props.msisdn}`)
+  .then(console.log("Page View Recorded"))
+  .catch(console.error());
 
-      Event("Count", "Load", "Landing");
-      if(data){
-        this.setState({data});
-        if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
-          Event("Count", "Load", "Already Subscribed");
-          window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`;
+  if(this.props.msisdn){
+      Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}?source=HE`)
+      .then(res => {
+        let data = res.data; 
+        // console.log(data);
+
+        Event("Count", "Load", "Landing");
+        if(data){
+          this.setState({data});
+          if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
+            Event("Count", "Load", "Already Subscribed");
+            window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`;
+          }
+          else if(data.subscription_status === "expired" || data.subscription_status === "not_billed" || data.is_gray_listed === true || data.code === 6){
+            this.setState({btnDisable: false});
+          }
         }
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    Axios.get(`${config.base_url}/package`)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+    Axios.get(`${config.base_url}/package?source=HE`)
     .then(res =>{
       // console.log(res.data[0])
       let packageData = res.data[0];
@@ -64,21 +75,28 @@ export default class  Popup extends React.Component {
       else if(res.data.code === 10 && res.data.message === "In queue for billing!"){
         Event("Count", "Click", "Queued for billing");
       }
-      window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`
+      setTimeout(() => {
+        window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`
+      }, 2000);
     })
     .catch(err =>{
       alert("Something went wrong! :(");
     })
   }
   cancel(){
+    Event("Count", "Click", "Cancel");
     this.setState({doubleConsent: false});
   }
   handleSubmit(){
       Event("Count", "Click", "Subscribe Button Click");
-      if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "graced"  || this.state.data.subscription_status === "not_billed" || this.state.data.is_gray_listed === true){
+      Event("Click", "Test Case S-1", this.props.msisdn);
+      if(this.state.data.subscription_status === "expired" || this.state.data.subscription_status === "not_billed" || this.state.data.is_gray_listed === true){
         this.setState({doubleConsent: true});
+        Event("Count", "Click", "Double Consent");
       }
       else if(this.state.data.code === 6){
+        Event("Click", "Test Case T-2", "testing");
+        Event("Click", "Test Case T-1", this.props.msisdn);
         this.subscribe();
       }
   }
@@ -97,12 +115,21 @@ export default class  Popup extends React.Component {
               <div className="popup_text_2">ONE DAY TRIAL CLICK ON</div>
               <div className="popup_text_3">SUBSCRIBE</div>
             </div>
-            <div className="">
-              <button className="button" onClick={this.handleSubmit}>
-                <div style={{float: "left", marginLeft: "8%"}}>SUBSCRIBE NOW</div>
-                <img src={require("../../assets/t-logo.png")} style={{float: "right", height: "20px", marginRight: "8%"}} />
-              </button>
-            </div>
+            {this.state.btnDisable === true ? 
+              <div className="">
+                {/* <button className="button" onClick={this.handleSubmit} disabled>
+                  <div style={{float: "left", marginLeft: "8%"}}>SUBSCRIBE NOW</div>
+                  <img src={require("../../assets/t-logo.png")} style={{float: "right", height: "20px", marginRight: "8%"}} />
+                </button> */}
+              </div>
+              :
+              <div className="">
+                <button className="button" onClick={this.handleSubmit}>
+                  <div style={{float: "left", marginLeft: "8%"}}>SUBSCRIBE NOW</div>
+                  <img src={require("../../assets/t-logo.png")} style={{float: "right", height: "20px", marginRight: "8%"}} />
+                </button>
+              </div>
+            }
           </div>
           :
           <div className="popup_content">

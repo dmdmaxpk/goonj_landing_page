@@ -209,7 +209,7 @@ body, html {
   overflow-y: hidden;
 }
 .goonjLivePage{
-  background-image: url("./assets/liveTvBg.png");
+  background-image: url("./assets/web-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -355,6 +355,9 @@ body, html {
   .pslSubPage{
     background-image: url("./assets/pslMobile.png");
     background-position: unset;
+  }
+  .goonjLivePage{
+    background-image: url("./assets/mobilebg.png");
   }
   .btnSubmitPsl{
     position: relative;

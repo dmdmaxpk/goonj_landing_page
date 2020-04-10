@@ -41,12 +41,12 @@ export default class  PslSubmit extends React.Component {
   }
   subscribe(){
     const userData = {
-      msisdn: this.props.msisdn,
-      package_id: this.state.packageId,
-      source: "HE",
-      marketing_source: this.props.src,
-      affiliate_unique_transaction_id: this.props.tid,
-      affiliate_mid: this.props.mid
+      // msisdn: this.props.msisdn,
+      // package_id: this.state.packageId,
+      // source: "HE",
+      // marketing_source: this.props.src,
+      // affiliate_unique_transaction_id: this.props.tid,
+      // affiliate_mid: this.props.mid
     }
     // console.log('user', userData);
     Axios.post(`${config.base_url}/payment/subscribe`, userData)

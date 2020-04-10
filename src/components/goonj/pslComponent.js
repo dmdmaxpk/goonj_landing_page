@@ -17,7 +17,7 @@ class PslComponent extends React.Component {
     }
   }
   componentDidMount(){
-    Axios.get(`${config.base_url}/package`)
+    Axios.get(`${config.base_url}/package?source=web`)
     .then(res =>{
       console.log(res.data)
       let packageData = res.data;
