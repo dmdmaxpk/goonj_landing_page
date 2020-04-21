@@ -32,9 +32,24 @@ class LiveComponent extends React.Component {
   render() {
     return (
         <div className="liveComponent">
-            {/* <img className="goonjLogo" src={require("../../assets/logoGoonj.png")} /> */}
-            {/* <p className="liveText1">Watch 25+ top live<br />Channels</p> */}
-            <Box packageID={this.state.packageID} pkgPrice={this.state.packagePrice} msisdn={this.props.msisdn} slug={this.props.slug}/>
+          <div className="landing_page_background">
+            <div className="liveContainer">
+              <img className = "gLogo" src={require("../../assets/gla.png")} />
+              <br />
+              <h1 className = "aText1 aText1b">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
+              <p className = "aText3 lightFont aText3b">24hrs free trial for first time users</p>
+                <Box packageID={this.state.packageID} pkgPrice={this.state.packagePrice} msisdn={this.props.msisdn} slug={this.props.slug}/>
+              <div className="chargesBox lightFont">
+                <p className="cbText1">
+                  <font className="chargePP">Rs 5/day</font> daily charges after free trial
+                  from mobile balance
+                </p>
+                <p className="cbText2">
+                  <font className="cancelText">cancel anytime from </font>Account/settings
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
     );
   }

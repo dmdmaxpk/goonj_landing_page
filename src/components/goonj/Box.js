@@ -78,33 +78,19 @@ class Box extends React.Component {
     return (
         <div className="box">
             {this.state.doubleConsent === false ?
-                <div className="boxBgDiv">
-                    <div className="bbTextDiv">
-                        <p className="text0">
-                          WATCH YOUR FAVORITE <br />
-                          CHANNELS ANYTIME ANYWHERE
-                        </p>
-                        <p className="text1">Free 24HRs trial for first time users</p>
-                        {/* <p className="text2">Rs. 5/DAY!</p> */}
-                        {/* <p className="text3">Charged from your mobile balance</p> */}
                         <button className="btnSub" onClick={this.handleSubmit}>
-                            <img className="btnSubImg" src={require("../../assets/btnTelenor.png")} />
+                            <img className="btnSubImg" src={require("../../assets/subBtn.png")} />
                         </button>
-                        <p className="text4">
-                        *I agree to daily recurring charge of rs 5 from my mobile balance until unsubscription
-                        </p>
-                    </div>
-                </div>
         :
-            <div className="boxBgDiv">
-                <div className="bbTextDiv">
+            // <div className="">
+                <div className="">
                     <p className="text1">Are you sure<br />you want to subscribe?</p>
                     <button className="btnSubConfirm" onClick={this.subscribe}>
-                        <img src={require("../../assets/Shape-2.png")} />
+                        <img className="confirmBtnImg" src={require("../../assets/Shape-2.png")} />
                         <p className="btnConfirmText">Confirm</p>
                     </button>
                 </div>
-            </div>
+            // </div>
         }
         </div>
     );

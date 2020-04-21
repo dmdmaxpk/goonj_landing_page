@@ -19,7 +19,7 @@ export default class GoonjLive extends React.Component {
     var slug = urlParams.get('slug');
     var msisdn = urlParams.get('msisdn');
     return (
-        <div className="full_page_height">
+        <div className="liveComponent">
             <div className="goonjLivePage">
                 <LiveComponent msisdn={msisdn} channelID={channelID} slug={slug}/>
             </div>

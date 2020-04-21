@@ -1,10 +1,22 @@
 .liveComponent{
-    text-align: center;
+    height: 100%;
+    overflow-y: scroll;
+}
+.liveComponent::-webkit-scrollbar{
+    display: none;
+}
+.liveContainer{
+    position: relative;
+    top: 10%;
+}
+.gLogo{
+    width: 200px;
 }
 .box{
-    text-align: left;
-    margin-top: 10%;
-    margin-left: 6%;
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    margin-left: 0;
 }
 .goonjLogo{
     margin-top: 2%;
@@ -40,7 +52,7 @@
 .text1{
     font-size: x-large;
     text-transform: none;
-    margin-bottom: 2% !important;
+    margin-bottom: 0 !important;
 }
 .text2{
     font-size: small;
@@ -64,7 +76,7 @@
     margin-top: 2%;
 }
 .btnSubConfirm{
-    margin-top: 3%;
+    margin-top: 1%;
     background-color: transparent;
     border: none;
     font-family: 'Montserrat', sans-serif;
@@ -81,6 +93,12 @@
     width: 100%;
     font-size: large;
 }
+.aText1b{
+    margin-bottom: 0 !important;
+  }
+.aText3b{
+    margin-top: 5px !important;
+}
 @media screen and (max-width: 1690px) {
     .liveText1{
         margin: 2% 0 2% 0;
@@ -90,7 +108,7 @@
     }
     .btnSubImg{
         width: 50%;
-        float: left;
+        /* float: left; */
     }
     .teamsImg{
         width: 50%;
@@ -142,12 +160,31 @@
         width: 60%;
     }
 }
-@media screen and (max-width: 852px) {
-    .boxBgImg{
-        width: 60%;
+@media screen and (max-width: 850px) {
+    .liveContainer{
+        top: 2%;
     }
-    .teamsImg{
-        width: 70%;
+    .aText1b, .aText3b {
+        font-size: large;
+    }
+    .text1{
+        font-size: small;
+    }
+    .btnSubImg{
+        width: 30%;
+    }
+    .confirmBtnImg{
+        width: 55%;
+    }
+    .btnConfirmText{
+        font-size: smaller;
+    }
+    .chargesBox{
+        width: 40%;
+        left: 28%;
+    }
+    .cbText1, .cbText2 {
+        font-size: x-small;
     }
 }
 @media screen and (max-width: 705px) {
@@ -209,6 +246,9 @@
         font-size: x-small;
 
     }
+    .box{
+        margin-bottom: 10%;
+    }
     .btnSubImg{
         width: 60%;
         float: none;
@@ -219,9 +259,29 @@
     .teamsImg{
         display: none;
     }
+    .aText1b{
+        font-size: x-large;
+        margin-top: 2em !important;
+    }
+    .aText3b{
+        font-size: x-large;
+        margin: 10% !important;
+    }
+    .chargesBox{
+        width: 90%;
+        left: 2.5%;
+    }
+    .cbText1, .cbText2 {
+        font-size: small;
+    }
 }
 @media screen and (max-width: 420px) {
     .boxBgImg{
         width: 100%;
+    }
+}
+@media screen and (max-width: 320px) {
+    .aText1b, .aText3b{
+        font-size: large;
     }
 }
