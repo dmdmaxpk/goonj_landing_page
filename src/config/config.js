@@ -1,5 +1,5 @@
 export const config = {
-    production: {
+    staging: {
         base_url: 'https://api.goonj.pk/v2',
         mainWebsiteUrl: "http://staging.goonj.pk" 
     },

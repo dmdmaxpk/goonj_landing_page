@@ -35,7 +35,7 @@ export default class  Popup extends React.Component {
           this.setState({data});
           if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
             Event("Count", "Load", "Already Subscribed");
-            window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`;
+            window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}&refresh=true`;
           }
           else if(data.subscription_status === "expired" || data.subscription_status === "not_billed" || data.is_gray_listed === true || data.code === 6){
             this.setState({btnDisable: false});
@@ -76,7 +76,7 @@ export default class  Popup extends React.Component {
         Event("Count", "Click", "Queued for billing");
       }
       setTimeout(() => {
-        window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`
+        window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}&refresh=true`
       }, 2000);
     })
     .catch(err =>{
@@ -103,51 +103,17 @@ export default class  Popup extends React.Component {
 
   render() {
     return (
-        <div className="popup">
-
+        <div>
           {this.state.doubleConsent === false ?
-            <div className="popup_content">
-            <div className="">
-              <img className="goonj_logo" src={require("../../assets/logo.png")} />
-            </div>
-            <div className="">
-              <div className="popup_text_1">TO START YOUR FREE</div>
-              <div className="popup_text_2">ONE DAY TRIAL CLICK ON</div>
-              <div className="popup_text_3">SUBSCRIBE</div>
-            </div>
-            {this.state.btnDisable === true ? 
-              <div className="">
-                {/* <button className="button" onClick={this.handleSubmit} disabled>
-                  <div style={{float: "left", marginLeft: "8%"}}>SUBSCRIBE NOW</div>
-                  <img src={require("../../assets/t-logo.png")} style={{float: "right", height: "20px", marginRight: "8%"}} />
-                </button> */}
-              </div>
-              :
-              <div className="">
-                <button className="button" onClick={this.handleSubmit}>
-                  <div style={{float: "left", marginLeft: "8%"}}>SUBSCRIBE NOW</div>
-                  <img src={require("../../assets/t-logo.png")} style={{float: "right", height: "20px", marginRight: "8%"}} />
-                </button>
-              </div>
-            }
-          </div>
+            <button className="afSubBtn" onClick={this.handleSubmit}>
+              <img className="afSubBtnImg" src={require("../../assets/subBtn.png")} />
+            </button>
           :
-          <div className="popup_content">
-            <div className="">
-              <img className="goonj_logo" src={require("../../assets/logo.png")} />
+            <div className = "DCBox">
+              <p className="confirmText">Confirm?</p>
+              <button className="btnDoubleConsent btnYes" onClick={this.subscribe}>Yes</button>
+              <button className="btnDoubleConsent btnNo" onClick={this.cancel}>No</button>
             </div>
-            <div className="">
-              <div className="popup_text_1">PROCEED?</div>
-            </div>
-            <div className="">
-              <button className="btnDoubleConsent btnYes" onClick={this.subscribe}>
-                  <div style={{float: "left", marginLeft: "8%"}}>YES</div>
-              </button>
-              <button className="btnDoubleConsent btnNo" onClick={this.cancel}>
-                  <div style={{float: "RIGHT", marginRight: "8%"}}>NO</div>
-              </button>
-            </div>
-          </div>
           }
         </div>
     );
