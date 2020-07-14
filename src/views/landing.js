@@ -39,17 +39,17 @@ export default class  Landing extends React.Component {
               </div>
               <br />
               <p className = "aText2 lightFont">and much more</p>
-              <p className = "aText3 lightFont">24hrs free trial for first time users</p>
+
+              {/* <p className = "aText3 lightFont">24hrs free trial for first time users</p> */}
             {
                 this.state.showPopup? <Popup msisdn={msisdn} src={src} mid={mid} tid={unique_transaction_id} />: null
             }
               <div className="chargesBox lightFont">
                 <p className="cbText1">
-                  <font className="chargePP">Rs 5/day</font> daily charges after free trial
-                  from mobile balance
+                  <font className="chargePP">Rs 5/day</font> Charges will be deducted from mobile balance
                 </p>
                 <p className="cbText2">
-                  <font className="cancelText">cancel anytime from </font>Account/settings
+                  <font className="cancelText">for package conversion or cancellation, go to </font>About{">"}Account
                 </p>
               </div>
             </div>

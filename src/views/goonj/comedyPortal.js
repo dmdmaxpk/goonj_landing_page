@@ -1,8 +1,7 @@
 import React from 'react';
-import PslSubmit from '../../components/pslSubmit/pslSubmit';
-import LiveComponent from '../../components/goonj/liveComponent';
+import ComedyComponent from '../../components/goonj/comedyComponent';
 
-export default class GoonjLive extends React.Component {
+export default class GoonjComedyPortal extends React.Component {
 
   constructor(props){
     super(props);
@@ -15,14 +14,13 @@ export default class GoonjLive extends React.Component {
   render() {
     var queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    var channelID = urlParams.get('channelID');
-    var slug = urlParams.get('slug');
+    var postUrl = urlParams.get('postUrl');
     var msisdn = urlParams.get('msisdn');
     var source = urlParams.get('source');
     return (
         <div className="liveComponent">
             <div className="goonjLivePage">
-                <LiveComponent msisdn={msisdn} channelID={channelID} slug={slug} source={source}/>
+                <ComedyComponent msisdn={msisdn} postUrl={postUrl} source={source}/>
             </div>
         </div>
     );

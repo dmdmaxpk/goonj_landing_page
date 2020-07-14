@@ -1,6 +1,6 @@
 export const config = {
     staging: {
-        base_url: 'https://api.goonj.pk/v2',
+        base_url: 'http://3.126.102.117:5000',
         mainWebsiteUrl: "http://staging.goonj.pk" 
     },
     production: {
@@ -14,10 +14,10 @@ export const config = {
 };
 
 
-let environment = 'staging';
+let environment = 'production';
 if (process.env.REACT_APP_ENV) {
   environment = process.env.REACT_APP_ENV ;
 } else {
-    environment = 'staging';
+    environment = 'production';
 }
 export default config[environment];

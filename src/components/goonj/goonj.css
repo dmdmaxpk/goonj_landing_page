@@ -14,9 +14,7 @@
 }
 .box{
     text-align: center;
-    margin-top: 4%;
-    margin-bottom: 4%;
-    margin-left: 0;
+    margin: 2% 0;
 }
 .goonjLogo{
     margin-top: 2%;
@@ -51,7 +49,7 @@
 }
 .text1{
     font-size: x-large;
-    text-transform: none;
+    text-transform: uppercase;
     margin-bottom: 0 !important;
 }
 .text2{
@@ -66,9 +64,10 @@
     border: none;
     background: none;
     cursor: pointer;
+    width: 25%;
 }
 .btnSubImg{
-    width: 50%;
+    width: 100%;
 }
 .text4{
     text-transform: none;
@@ -99,6 +98,40 @@
 .aText3b{
     margin-top: 5px !important;
 }
+.selectPkgDiv{
+    float: left;
+    position: relative;
+    left: 40%;
+    border: 1px solid #cccccc5c;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+.pkgTitle{
+    font-size: small;
+}
+.priceP{
+    font-size: smaller;
+    font-weight: 100;
+    color: #319fe7;
+}
+.selectPkgDivCP{
+    float: left;
+    position: relative;
+    left: 37%;
+    border: 1px solid #cccccc5c;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+.pkgTitleCP{
+    font-size: small;
+}
+.pricePCP{
+    font-size: smaller;
+    font-weight: 100;
+    color: #319fe7;
+}
 @media screen and (max-width: 1690px) {
     .liveText1{
         margin: 2% 0 2% 0;
@@ -107,7 +140,7 @@
         top: 0;
     }
     .btnSubImg{
-        width: 50%;
+        /* width: 50%; */
         /* float: left; */
     }
     .teamsImg{
@@ -151,6 +184,12 @@
     .teamsImg{
         width: 55%;
     }
+    .selectPkgDiv{
+        left: 35%;
+    }
+    .selectPkgDivCP{
+        left: 30%;
+    }
 }
 @media screen and (max-width: 960px) {
     .boxBgImg{
@@ -170,9 +209,6 @@
     .text1{
         font-size: small;
     }
-    .btnSubImg{
-        width: 30%;
-    }
     .confirmBtnImg{
         width: 55%;
     }
@@ -185,6 +221,12 @@
     }
     .cbText1, .cbText2 {
         font-size: x-small;
+    }
+    .selectPkgDiv{
+        left: 30%;
+    }
+    .selectPkgDivCP{
+        left: 25%;
     }
 }
 @media screen and (max-width: 705px) {
@@ -249,8 +291,10 @@
     .box{
         margin-bottom: 10%;
     }
+    .btnSub{
+        width: 80%;
+    }
     .btnSubImg{
-        width: 60%;
         float: none;
     }
     .text4{
@@ -274,14 +318,55 @@
     .cbText1, .cbText2 {
         font-size: small;
     }
+    .selectPkgDiv{
+        left: 10%;
+    }
+    .selectPkgDivCP{
+        left: 10%;
+    }
+    .pkgTitleCP, .pricePCP{
+        font-size: x-small;
+    }
 }
 @media screen and (max-width: 420px) {
     .boxBgImg{
         width: 100%;
     }
 }
+
+@media screen and (max-width: 380px) {
+    .selectPkgDiv{
+        left: 6%;
+    }
+    .selectPkgDivCP{
+        left: 6%;
+    }
+}
+@media screen and (max-width: 360px) {
+    .selectPkgDiv{
+        left: 4%;
+    }
+    .selectPkgDivCP{
+        left: 4%;
+    }
+}
 @media screen and (max-width: 320px) {
     .aText1b, .aText3b{
         font-size: large;
+    }
+    .selectPkgDiv{
+        left: 8%;
+    }
+    .pkgTitle{
+        font-size: x-small;
+    }
+    .priceP{
+        font-size: xx-small;
+    }
+    .selectPkgDivCP{
+        left: 4%;
+    }
+    .pkgTitleCP, .pricePCP{
+        font-size: xx-small;
     }
 }
