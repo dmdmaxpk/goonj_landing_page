@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { config } from '../../config/config';
 
-class ConfirmSub extends Component {
+class GdnTwoConfirmSub extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,4 +18,4 @@ class ConfirmSub extends Component {
     }
 }
  
-export default ConfirmSub;
+export default GdnTwoConfirmSub;

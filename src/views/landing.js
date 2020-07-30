@@ -24,10 +24,11 @@ export default class  Landing extends React.Component {
     var unique_transaction_id = urlParams.get('tid');
     return (
         <div className="full_page_height">
-            <div className="landing_page_background">
-              <img className = "agLogo" src={require("../assets/gla.png")} />
-              <br />
-              <h1 className = "aText1">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
+            <div className="affiliateLandingBg">
+              {/* <img className = "agLogo" src={require("../assets/gla.png")} />
+              <br /> */}
+              <h1 className = "aText1 zeroMB aText1sm">NA TV KI ZAROORAT AUR NA HE CABLE KI!</h1>
+              <h1 className = "aText1 aText1a aText1sm">ABH <font color="#9ee132">Goonj</font> se Mobile bna tv!</h1>
               <br />
               <div className="channelLogosDiv">
                 <img className="channelLogosImg" src={require("../assets/channelLogos/01.png")} />
@@ -35,10 +36,13 @@ export default class  Landing extends React.Component {
                 <img className="channelLogosImg" src={require("../assets/channelLogos/03.png")} />
                 <img className="channelLogosImg" src={require("../assets/channelLogos/04.png")} />
                 <img className="channelLogosImg" src={require("../assets/channelLogos/06.png")} />
-                <img className="channelLogosImg lastChannelImage" src={require("../assets/channelLogos/07.png")} />
+                <br />
+                <img className="channelLogosImg lastChannelImage" src={require("../assets/channelLogos/08.png")} />
+                <img className="channelLogosImg lastChannelImage" src={require("../assets/channelLogos/09.png")} />
+                <img className="channelLogosImg lastChannelImage" src={require("../assets/channelLogos/10.png")} />
               </div>
               <br />
-              <p className = "aText2 lightFont">and much more</p>
+              {/* <p className = "aText2 lightFont">and much more</p> */}
 
               {/* <p className = "aText3 lightFont">24hrs free trial for first time users</p> */}
             {
@@ -49,7 +53,7 @@ export default class  Landing extends React.Component {
                   <font className="chargePP">Rs 5/day</font> Charges will be deducted from mobile balance
                 </p>
                 <p className="cbText2">
-                  <font className="cancelText">for package conversion or cancellation, go to </font>About{">"}Account
+                  <font className="cancelText">for package conversion or cancellation, go to </font>Profile{">"}Subscriptions
                 </p>
               </div>
             </div>

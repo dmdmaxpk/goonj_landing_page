@@ -43,13 +43,13 @@ class LiveComponent extends React.Component {
               <br />
               <h1 className = "aText1 aText1b">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
               {/* <p className = "aText3 lightFont aText3b">24hrs free trial for first time users</p> */}
-                <Box packageID={this.state.packageID} packageID1={this.state.packageID1} packageID2={this.state.packageID2} pkgPrice1={this.state.packagePrice1} pkgPrice2={this.state.packagePrice2} msisdn={this.props.msisdn} slug={this.props.slug} source={this.props.source}/>
+                <Box packageID={this.state.packageID} packageID1={this.state.packageID1} packageID2={this.state.packageID2} pkgPrice1={this.state.packagePrice1} pkgPrice2={this.state.packagePrice2} msisdn={this.props.msisdn} slug={this.props.slug ? `channel/${this.props.slug}` : 'live-tv'} source={this.props.source}/>
               <div className="chargesBox lightFont">
                 <p className="cbText1">
                 <font color="#319fe7">Rs. 15/WEEK </font> Charges will be deducted from mobile balance
                 </p>
                 <p className="cbText2">
-                  <font className="cancelText">for package conversion or cancellation, go to </font>About{">"}Account
+                  <font className="cancelText">for package conversion or cancellation, go to </font>Profile{">"}Subscriptions
                 </p>
               </div>
             </div>

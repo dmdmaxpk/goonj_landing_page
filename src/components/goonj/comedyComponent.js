@@ -49,7 +49,7 @@ class ComedyComponent extends React.Component {
                 <font color="#319fe7">Rs. 10+tax/WEEK </font> Charges will be deducted from mobile balance
                 </p>
                 <p className="cbText2">
-                  <font className="cancelText">for package conversion or cancellation, go to </font>About{">"}Account
+                  <font className="cancelText">for package conversion or cancellation, go to </font>Profile{">"}Subscriptions
                 </p>
               </div>
             </div>

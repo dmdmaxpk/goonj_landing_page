@@ -40,7 +40,7 @@ class Popup extends React.Component {
               this.setState({data});
               if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
                 Event("Count", "Load", "Already Subscribed");
-                window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}&package_id=${this.state.packageId}&refresh=true`;
+                window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}&package_id=${this.state.packageId}`;
               }
               else if(data.subscription_status === "expired" || data.subscription_status === "not_billed" || data.is_gray_listed === true || data.code === 6){
                 this.setState({btnDisable: false});
@@ -86,7 +86,8 @@ class Popup extends React.Component {
           this.props.history.push({
           pathname: "/confirmSubscription",
           state: {
-            msisdn: this.props.msisdn
+            msisdn: this.props.msisdn,
+            packageID: res.data.packageId
           }
         })
       }
@@ -98,7 +99,7 @@ class Popup extends React.Component {
         Event("Count", "Click", "Queued for billing");
       }
       setTimeout(() => {
-        window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}&package_id=${res.data.package_id}&refresh=true`
+        window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}&package_id=${res.data.package_id}`
       }, 2000);
     }
     })
@@ -132,8 +133,9 @@ class Popup extends React.Component {
           {this.state.doubleConsent === false ?
             this.state.btnDisable === false ?
               this.state.loading === false ?
-                <button className="afSubBtn" onClick={this.handleSubmit}>
-                  <img className="afSubBtnImg" src={require("../../assets/subBtn.png")} />
+                <button className="affiliateSubBtn" onClick={this.handleSubmit}>
+                  Subscribe Now 
+                  <img className="telenorBtnLogo" src={require("../../assets/t-logo.png")} />
                 </button>
               :
                 <Loader

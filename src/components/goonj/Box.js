@@ -34,9 +34,9 @@ class Box extends React.Component {
         if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
           Event("Count", "Load", "Already Subscribed GoonjHE");
           {this.props.slug ? 
-            window.location.href = `${config.mainWebsiteUrl}/channel/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true&package_id=${this.props.packageID1}`
+            window.location.href = `${config.mainWebsiteUrl}/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true&package_id=${this.props.packageID1}`
           :
-            window.location.href = `${this.props.postUrl}?msisdn=${this.props.msisdn}&iden=true&CPpackage_id=${this.props.packageID1}`
+            window.location.href = `${config.mainWebsiteUrl}/${this.props.postUrl}?msisdn=${this.props.msisdn}&iden=true&package_id=${this.props.packageID1}`
           }
         }
         else{
@@ -49,9 +49,9 @@ class Box extends React.Component {
               if(data.subscription_status === "billed" || data.subscription_status === "trial" || data.subscription_status === "graced"){
                 Event("Count", "Load", "Already Subscribed GoonjHE");
                 {this.props.slug ? 
-                  window.location.href = `${config.mainWebsiteUrl}/channel/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true&package_id=${this.props.packageID2}`
+                  window.location.href = `${config.mainWebsiteUrl}/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true&package_id=${this.props.packageID2}`
                 :
-                  window.location.href = `${this.props.postUrl}?msisdn=${this.props.msisdn}&iden=true&CPpackage_id=${this.props.packageID2}`
+                  window.location.href = `${config.mainWebsiteUrl}/${this.props.postUrl}?msisdn=${this.props.msisdn}&iden=true&package_id=${this.props.packageID2}`
                 }
               }
             }
@@ -76,6 +76,7 @@ class Box extends React.Component {
     }
     Axios.post(`${config.base_url}/payment/subscribe`, userData)
     .then(res =>{
+      console.log("response package", res.data.package_id)
       if(res.data.code === -1){
         this.setState({loading: false});
         alert(res.data.message);
@@ -90,9 +91,9 @@ class Box extends React.Component {
       }
       setTimeout(() => {
         {this.props.slug ?
-          window.location.href = `${config.mainWebsiteUrl}/channel/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true&package_id=${res.data.package_id}`
+          window.location.href = `${config.mainWebsiteUrl}/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true&package_id=${res.data.package_id}`
         :
-          window.location.href = `${this.props.postUrl}?msisdn=${this.props.msisdn}&iden=true&CPpackage_id=${res.data.package_id}`;
+          window.location.href = `${config.mainWebsiteUrl}/${this.props.postUrl}?msisdn=${this.props.msisdn}&iden=true&package_id=${res.data.package_id}`;
         }
       }, 2000);
     })
@@ -105,6 +106,7 @@ class Box extends React.Component {
     this.setState({doubleConsent: false});
   }
   handleSubmit(){
+    console.log(this.props)
     Event("Count", "Click", "GoonjHE Subscribe Btn Click");
       if (this.state.data.subscription_status === "expired" ||
           this.state.data.subscription_status === "graced"  ||
@@ -127,9 +129,15 @@ class Box extends React.Component {
         <div className="box">
             {this.state.doubleConsent === false ?
               this.state.loading === false ?
-                <button className="btnSub" onClick={this.handleSubmit}>
-                    <img className="btnSubImg" src={require("../../assets/subBtn.png")} />
-                </button>
+                <div>
+                  <p>Subscribe Now</p>
+                  <button className="btnSub" onClick={this.handleSubmit}>
+                      <img className="btnSubImg" src={require("../../assets/telenorBtn.png")} />
+                  </button>
+                  <button className="btnSub" onClick={()=> window.location.href = `${config.mainWebsiteUrl}/paywall/${this.props.location.pathname == "/goonjLive" ? `live?slug=${this.props.slug.split('/')[1]}` : `comedy?postUrl=${this.props.postUrl}`}`}>
+                    <img className="btnSubImg" src={require("../../assets/easypaisaBtn.png")} />
+                  </button>
+                </div>
               :
                 <Loader
                   type="Rings"

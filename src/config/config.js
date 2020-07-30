@@ -1,7 +1,7 @@
 export const config = {
     staging: {
         base_url: 'http://3.126.102.117:5000',
-        mainWebsiteUrl: "http://staging.goonj.pk" 
+        mainWebsiteUrl: "http://alpha.goonj.pk" 
     },
     production: {
         base_url: 'https://api.goonj.pk/v2',
