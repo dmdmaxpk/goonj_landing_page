@@ -71,11 +71,11 @@ class Popup extends React.Component {
       source: "HE",
       marketing_source: this.props.mid,
       affiliate_unique_transaction_id: this.props.tid,
-      affiliate_mid: this.props.mid
-
+      affiliate_mid: this.props.mid,
+      payment_source: 'telenor'
     }
     // console.log('user', userData);
-    Axios.post(`${config.base_url}/payment/subscribe`, userData)
+    Axios.post(`${config.base_url}/payment/subscribe`, userData, {timeout: 40000})
     .then(res =>{
       if(res.data.code === -1){
         this.setState({loading: false});

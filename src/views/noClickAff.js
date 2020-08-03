@@ -83,11 +83,11 @@ class NoClickAff extends Component {
             source: "HE",
             marketing_source: mid,
             affiliate_unique_transaction_id: tid,
-            affiliate_mid: mid
-      
+            affiliate_mid: mid,
+            payment_source: 'telenor'
           }
           // console.log('user', userData);
-          Axios.post(`${config.base_url}/payment/subscribe`, userData)
+          Axios.post(`${config.base_url}/payment/subscribe`, userData, {timeout: 40000})
           .then(res =>{
             if(res.data.code === -1){
               this.setState({loading: false});

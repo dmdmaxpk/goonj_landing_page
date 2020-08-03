@@ -73,10 +73,11 @@ class Box extends React.Component {
       msisdn: this.props.msisdn,
       package_id: this.props.packageID,
       source: this.props.source,
+      payment_source: 'telenor'
     }
-    Axios.post(`${config.base_url}/payment/subscribe`, userData)
+    Axios.post(`${config.base_url}/payment/subscribe`, userData, {timeout: 40000})
     .then(res =>{
-      console.log("response package", res.data.package_id)
+      console.log("response package", userData)
       if(res.data.code === -1){
         this.setState({loading: false});
         alert(res.data.message);
@@ -91,9 +92,9 @@ class Box extends React.Component {
       }
       setTimeout(() => {
         {this.props.slug ?
-          window.location.href = `${config.mainWebsiteUrl}/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true&package_id=${res.data.package_id}`
+          window.location.href = `${config.mainWebsiteUrl}/${this.props.slug}?msisdn=${this.props.msisdn}&iden=true&package_id=${res.data.package_id ? res.data.package_id : this.props.packageID}`
         :
-          window.location.href = `${config.mainWebsiteUrl}/${this.props.postUrl}?msisdn=${this.props.msisdn}&iden=true&package_id=${res.data.package_id}`;
+          window.location.href = `${config.mainWebsiteUrl}/${this.props.postUrl}?msisdn=${this.props.msisdn}&iden=true&package_id=${res.data.package_id ? res.data.package_id : this.props.packageID}`;
         }
       }, 2000);
     })
