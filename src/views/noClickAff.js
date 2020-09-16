@@ -14,7 +14,7 @@ class NoClickAff extends Component {
         var tid = urlParams.get('tid');
         this.state = {
             data: [],
-            packageId: 'QDfC',
+            packageId: mid === 'aff3a' ? 'QDfC' : 'QDfC',
             msisdn: msisdn,
             mid: mid,
             tid: tid,
@@ -79,7 +79,7 @@ class NoClickAff extends Component {
           var {msisdn, src, mid, tid, packageId} = this.state;
           const userData = {
             msisdn: msisdn,
-            package_id: packageId,
+            package_id: mid === 'aff3a' ? 'QDfC' : packageId,
             source: "HE",
             marketing_source: mid,
             affiliate_unique_transaction_id: tid,
