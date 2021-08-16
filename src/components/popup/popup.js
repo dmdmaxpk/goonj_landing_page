@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactGA from "react-ga";
-import Axios from 'axios';
+// import Axios from 'axios';
 import  config  from '../../config/config';
 import {Event} from '../Tracking';
 import { withRouter } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
+import PaywallInstance from '../../config/PaywallInstance';
+import AxiosInstance from '../../config/AxiosInstance';
 
 class Popup extends React.Component {
 
@@ -24,14 +25,14 @@ class Popup extends React.Component {
   }
   componentDidMount(){
     // Pageview call
-    Axios.get(`${config.base_url}/pageview?source=HE&msisdn=${this.props.msisdn}&mid=${this.props.mid}&tid=${this.props.tid}`)
+    AxiosInstance.get(`${config.base_url}/pageview?source=HE&msisdn=${this.props.msisdn}&mid=${this.props.mid}&tid=${this.props.tid}`)
     .then(res => {console.log("pageview response", res)})
     .catch(console.error());
 
     // Check User Status
     setTimeout(() => {
       if(this.props.msisdn){
-          Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}?source=HE&package_id=${this.state.packageId}`)
+        AxiosInstance.get(`${config.base_url}/user/graylist/${this.props.msisdn}?source=HE&package_id=${this.state.packageId}`)
           .then(res => {
             let data = res.data;
 
@@ -54,7 +55,7 @@ class Popup extends React.Component {
     }, 3000);
 
       // Get Package ID
-      Axios.get(`${config.base_url}/package?source=HE`)
+      AxiosInstance.get(`${config.base_url}/package?source=HE`)
       .then(res =>{
         let packageData = res.data[0];
         // console.log(packageData._id);
@@ -75,7 +76,7 @@ class Popup extends React.Component {
       payment_source: 'telenor'
     }
     // console.log('user', userData);
-    Axios.post(`${config.base_url}/payment/subscribe`, userData, {timeout: 40000})
+    PaywallInstance.post(`${config.base_url}/payment/subscribe`, userData, {timeout: 40000})
     .then(res =>{
       if(res.data.code === -1){
         this.setState({loading: false});

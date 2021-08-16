@@ -1,8 +1,9 @@
 import React from 'react';
-import Axios from 'axios';
+// import Axios from 'axios';
 import  config  from '../../config/config';
 import "./goonj.css";
 import Box from './Box';
+import PaywallInstance from '../../config/PaywallInstance';
 // import { Logo } from '../../assets/logo.png'
 
 class ComedyComponent extends React.Component {
@@ -20,7 +21,7 @@ class ComedyComponent extends React.Component {
     }
   }
   componentDidMount(){
-    Axios.get(`${config.base_url}/package?source=${this.props.source}&slug=comedy`)
+    PaywallInstance.get(`${config.base_url}/package?source=${this.props.source}&slug=comedy`)
     .then(res =>{
       console.log(res.data)
       let packageData = res.data;

@@ -1,10 +1,12 @@
 import React from 'react';
-import Axios from 'axios';
+// import Axios from 'axios';
 import  config  from '../../config/config';
 import "./goonj.css";
 import { Event } from '../Tracking';
 import { withRouter } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
+import PaywallInstance from '../../config/PaywallInstance';
+import AxiosInstance from '../../config/AxiosInstance';
 
 class Box extends React.Component {
 
@@ -25,7 +27,7 @@ class Box extends React.Component {
   componentDidMount(){
     Event("Count", "Verified Through GoonjHE", this.props.msisdn);
     console.log("package id",this.props.packageID)
-    Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}?source=${this.props.source}&package_id=${this.props.packageID1}`)
+    AxiosInstance.get(`${config.base_url}/user/graylist/${this.props.msisdn}?source=${this.props.source}&package_id=${this.props.packageID1}`)
     .then(res => {
       let data = res.data; 
       console.log(data);
@@ -40,7 +42,7 @@ class Box extends React.Component {
           }
         }
         else{
-          Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}?source=${this.props.source}&package_id=${this.props.packageID2}`)
+          AxiosInstance.get(`${config.base_url}/user/graylist/${this.props.msisdn}?source=${this.props.source}&package_id=${this.props.packageID2}`)
           .then(res => {
             let data = res.data; 
             console.log(data);
@@ -72,10 +74,10 @@ class Box extends React.Component {
     const userData = {
       msisdn: this.props.msisdn,
       package_id: this.props.packageID,
-      source: this.props.source,
+      source: (this.props.source !== null && this.props.source !== "null" && this.props.source !== undefined && this.props.source !== "") ? this.props.src : "HE",
       payment_source: 'telenor'
     }
-    Axios.post(`${config.base_url}/payment/subscribe`, userData, {timeout: 40000})
+    PaywallInstance.post(`${config.base_url}/payment/subscribe`, userData, {timeout: 40000})
     .then(res =>{
       console.log("response package", userData)
       if(res.data.code === -1){

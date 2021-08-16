@@ -1,6 +1,7 @@
 import React from 'react';
-import Axios from 'axios';
+// import Axios from 'axios';
 import  config  from '../../config/config';
+import PaywallInstance from '../../config/PaywallInstance';
 
 export default class  PslSubmit extends React.Component {
 
@@ -16,7 +17,7 @@ export default class  PslSubmit extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
   componentDidMount(){
-    Axios.get(`${config.base_url}/user/graylist/${this.props.msisdn}`)
+    PaywallInstance.get(`${config.base_url}/user/graylist/${this.props.msisdn}`)
     .then(res => {
       let data = res.data; 
       console.log("greylist", data);
@@ -30,7 +31,7 @@ export default class  PslSubmit extends React.Component {
     .catch(err => {
       console.log(err);
     })
-    Axios.get(`${config.base_url}/package`)
+    PaywallInstance.get(`${config.base_url}/package`)
     .then(res =>{
       console.log(res.data[1])
       let packageData = res.data[1];
@@ -49,7 +50,7 @@ export default class  PslSubmit extends React.Component {
       // affiliate_mid: this.props.mid
     }
     // console.log('user', userData);
-    Axios.post(`${config.base_url}/payment/subscribe`, userData)
+    PaywallInstance.post(`${config.base_url}/payment/subscribe`, userData)
     .then(res =>{
       // console.log(res);
       window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${this.props.msisdn}`

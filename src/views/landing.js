@@ -50,7 +50,7 @@ export default class  Landing extends React.Component {
             }
               <div className="chargesBox lightFont">
                 <p className="cbText1">
-                  <font className="chargePP">Rs 5/day</font> Charges will be deducted from mobile balance
+                  <font className="chargePP">Rs 5 + tax/day</font> Charges will be deducted from mobile balance
                 </p>
                 <p className="cbText2">
                   <font className="cancelText">for package conversion or cancellation, go to </font>Profile{">"}Subscriptions

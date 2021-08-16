@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Axios from "axios";
+import AxiosInstance from '../config/AxiosInstance';
+// import Axios from "axios";
 import config from '../config/config'
+import PaywallInstance from '../config/PaywallInstance';
 
 class NoClickAff extends Component {
     constructor(props) {
@@ -29,14 +31,14 @@ class NoClickAff extends Component {
             var {msisdn, src, mid, tid, packageId, source} = this.state;
             console.log(msisdn, src, mid, tid);
           // Pageview call
-            Axios.get(`${config.base_url}/pageview?source=HE&msisdn=${msisdn}&mid=${mid}&tid=${tid}`)
+            AxiosInstance.get(`${config.base_url}/pageview?source=HE&msisdn=${msisdn}&mid=${mid}&tid=${tid}`)
             .then(res => {console.log("pageview response", res)})
             .catch(console.error());
         
             // Check User Status
             setTimeout(() => {
                 if(msisdn.length > 1){
-                    Axios.get(`${config.base_url}/user/graylist/${msisdn}?source=HE&package_id=${packageId}&mid=${mid}&tid=${tid}`)
+                    AxiosInstance.get(`${config.base_url}/user/graylist/${msisdn}?source=HE&package_id=${packageId}&mid=${mid}&tid=${tid}`)
                     .then(res => {
                         let data = res.data;
                         // Event("Count", "Load", "Landing");
@@ -67,7 +69,7 @@ class NoClickAff extends Component {
             }, 1000);
         }
         getPackage(){
-            Axios.get(`${config.base_url}/package?source=HE`)
+            AxiosInstance.get(`${config.base_url}/package?source=HE`)
             .then(res =>{
             let packageData = res.data[0];
             this.setState({
@@ -87,7 +89,7 @@ class NoClickAff extends Component {
             payment_source: 'telenor'
           }
           // console.log('user', userData);
-          Axios.post(`${config.base_url}/payment/subscribe`, userData, {timeout: 40000})
+          PaywallInstance.post(`${config.base_url}/payment/subscribe`, userData, {timeout: 40000})
           .then(res =>{
             if(res.data.code === -1){
               this.setState({loading: false});
@@ -96,7 +98,7 @@ class NoClickAff extends Component {
                 window.location.href = `${config.mainWebsiteUrl}/home?msisdn=${msisdn}`
             }
             else {
-                window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${msisdn}&package_id=${res.data.package_id}`
+                window.location.href = `${config.mainWebsiteUrl}/live-tv?msisdn=${msisdn}&package_id=${res.data.package_id ? res.data.package_id : packageId}`
           }
           })
           .catch(err =>{

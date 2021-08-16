@@ -18,6 +18,19 @@ class App extends React.Component{
 componentDidMount(){
   initGA('UA-69091505-12');
   PageView();
+
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  let UrlAccessToken = urlParams.get("access_token");
+  let UrlRefreshToken = urlParams.get("refresh_token");
+
+  if(UrlAccessToken){
+    localStorage.setItem('accessToken', UrlAccessToken);
+  }
+  if(UrlRefreshToken){
+    localStorage.setItem('refreshToken', UrlRefreshToken);
+  }
 }
 render(){
   return (
